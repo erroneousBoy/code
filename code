@@ -1,0 +1,63 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+//Complete the following function.
+
+
+void calculate_the_maximum(int n, int k) {
+  int a,b,c;
+  int s[n];
+  int and[2*n],or[2*n],xor[2*n];
+   int maxVal = 0;
+  
+  
+  for(int i =1;i<=n;i++)
+  {
+     s[i-1] = i;
+  }
+  for (int i =0;i<2*n;i++)
+  {
+     for (int j = 0; j<n;j++)
+     {
+         for(int e = 0;e<n && k!=n;e++)
+         {  int v=0;
+            and[v]=j&e;
+            or[v]=j|e;
+            xor[v]=j^e;
+            v++;
+         }
+         
+         
+     } 
+     for (int i = 0; i < 2*n && and[i] > maxVal; i++) {
+        if (and[i] < k ) 
+             a = and[i];
+      }
+             
+      for (int i = 0; i < 2*n && or[i] > maxVal; i++) {
+        if (or[i] < k ) 
+             b = or[i];
+      }
+             
+      for (int i = 0; i < 2*n && xor[i] > maxVal; i++) {
+        if (xor[i] < k ) 
+             c = xor[i];
+      }
+     
+  }
+  
+  int m[3] = {a,b,c};
+  for (int i =0;i<3;i++)
+   printf("%d \n",m[i]);
+  
+}
+
+int main() {
+    int n, k;
+  
+    scanf("%d %d", &n, &k);
+    calculate_the_maximum(n, k);
+ 
+    return 0;
+}
